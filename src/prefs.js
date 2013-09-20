@@ -27,6 +27,7 @@
  *
  */
 
+afcHelper = new Object();
 afcHelper_config = new Object();
 
 afcHelper_config.sections = [
@@ -71,9 +72,7 @@ afcHelper_config.sections = [
 ];
 
 function afcHelper_prefs_init() {
-	if ((mw.config.get("wgNamespaceNumber") === mw.config.get("wgNamespaceIds").project && mw.config.get("wgTitle") === "Articles for creation helper script/Preferences" ||
-			(mw.config.get("wgNamespaceNumber") === mw.config.get("wgNamespaceIds").user && mw.config.get("wgTitle").lastIndexOf("/AFCH preferences") === (mw.config.get("wgTitle").length - 20))) &&
-			mw.config.get("wgAction") === "view") {
+	if (mw.config.get("wgNamespaceNumber") === mw.config.get("wgNamespaceIds").project && mw.config.get("wgTitle") === "Articles for creation helper script/Preferences") {
 
 		if (!document.getElementById("afch-config")) {
 			return;  // maybe the page is misconfigured, or something - but any attempt to modify it will be pointless
@@ -948,7 +947,6 @@ afcHelper_config.saveSuccess = function afchconfigSaveSuccess(pageobj) {
 	noticeclear.style.clear = "both";
 	Morebits.status.root.appendChild(noticeclear);
 };
-})();
 
 afcHelper_prefs_init();
 
